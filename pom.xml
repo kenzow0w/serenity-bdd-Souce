@@ -105,7 +105,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <feature.file.language>ru</feature.file.language>
-                        <feature.file.encoding>UTF-8</feature.file.encoding>
+                        <feature.file.encoding>${encoding}</feature.file.encoding>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                     </systemPropertyVariables>
                     <includes>
