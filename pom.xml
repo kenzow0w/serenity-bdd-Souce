@@ -24,7 +24,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4j2.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -103,9 +102,11 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
+                    <argLine>
+                        -Dfile.encoding=UTF-8
+                    </argLine>
                     <systemPropertyVariables>
                         <feature.file.language>ru</feature.file.language>
-                        <feature.file.encoding>${encoding}</feature.file.encoding>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                     </systemPropertyVariables>
                     <includes>
