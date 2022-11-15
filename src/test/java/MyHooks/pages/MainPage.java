@@ -1,4 +1,4 @@
-package pages;
+package MyHooks.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;

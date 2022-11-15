@@ -1,4 +1,4 @@
-package steps;
+package stepdefs;
 
 import net.serenitybdd.core.steps.UIInteractions;
 import net.thucydides.core.annotations.Step;

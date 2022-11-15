@@ -1,18 +1,21 @@
-package steps;
+package stepdefs;
 
+import io.cucumber.java.ru.*;
 import net.thucydides.core.annotations.Step;
-import pages.MenuPage;
+import MyHooks.pages.MenuPage;
 
 public class MenuPageSteps {
 
     MenuPage menuPage;
 
-    @Step("И проверяется, что товаров в корзине нет")
+    @И("проверяется, что корзина пуста")
+    @Step
     public void shouldNotBeVisibleCount(){
         menuPage.shouldNotBeVisibleCountOnThePage();
     }
 
-    @Step("И проверяется, что в корзине находится [{0}] товаров")
+    @И("^проверяется, что в корзине находится (\\d+) това(?:р|ра|ов)$")
+    @Step
     public void shouldBeVisibleCountToCart(int count) {
         menuPage.shouldBeVisibleCountOnThePage(count);
     }

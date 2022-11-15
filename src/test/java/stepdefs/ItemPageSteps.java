@@ -1,18 +1,21 @@
-package steps;
+package stepdefs;
 
+import io.cucumber.java.ru.*;
 import net.thucydides.core.annotations.Step;
-import pages.ItemPage;
+import MyHooks.pages.ItemPage;
 
 public class ItemPageSteps {
 
     ItemPage itemPage;
 
-    @Step("И нажимаеттся кнопка добавить в корзину")
+    @И("нажимается кнопка добавить товар в корзину")
+    @Step
     public void clickOnAddItemToCart() {
     itemPage.addItemToTheCart();
     }
 
-    @Step("И проверяется, что кнопка [Remove] видна на странице")
+    @И("проверяется, что кнопка [Remove] видна на странице")
+    @Step
     public void shouldBeVisibleElementRemove() {
         itemPage.shouldBeVisibleElementRemove();
     }

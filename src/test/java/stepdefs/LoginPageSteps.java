@@ -1,10 +1,11 @@
-package steps;
+package stepdefs;
 
+import io.cucumber.java.ru.*;
 import lombok.SneakyThrows;
 import net.thucydides.core.annotations.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pages.LoginPage;
+import MyHooks.pages.LoginPage;
 
 public class LoginPageSteps {
 
@@ -12,16 +13,19 @@ public class LoginPageSteps {
 
     private LoginPage loginPage;
 
-    @Step("Открывается страница авторизации")
+    @Когда("открывается страница авторизации")
+    @Step
     public void isOnLoginPage(){
         LOG.info("Open page");
         loginPage.open();
     }
 
     @SneakyThrows
-    @Step("Выполняется авторизация как юзер")
+    @Затем("выполняется авторизация юзера с именем {string}, и паролем {string}")
+    @Step
     public void loginAsUser(String login, String password)
     {
         loginPage.autorization(login, password);
     }
+
 }
