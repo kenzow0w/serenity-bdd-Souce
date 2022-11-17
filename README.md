@@ -1,6 +1,6 @@
-# Serenity JUnit Starter project
+# Serenity Cucumber + JUnit Starter project
 
-Get started quickly with Serenity BDD and JUnit 5 with this simple starter project. 
+Get started quickly with Serenity BDD, Cucumber and JUnit 5 with this simple starter project. 
 
 ## Get the code
 
@@ -10,15 +10,10 @@ Or simply [download a zip](https://github.com/serenity-bdd/serenity-junit-starte
 
 ## Running the tests under Maven
 
-The template project comes with both Maven and Gradle build scripts. To run the tests with Maven, open a command window and run:
+The template project comes with both Maven build script. To run the tests with Maven, open a command window and run:
 
     mvn clean verify
-
-## Use Gradle
-
-For gradle, pen a command window and run:
-
-    gradlew appTests 
+ 
 
 ## Viewing the reports
 
