@@ -15,12 +15,10 @@ public class AccountCredentials {
     private final String password;
 
     @SneakyThrows
-    public AccountCredentials(String log, String pass) {
+    public AccountCredentials(String role) {
         try {
-            login = log;
-            password = pass;
-            Evaluator.setVariable("login", login);
-            Evaluator.setVariable("password", password);
+            login = Evaluator.getVariable(String.format("#{%s.login}", role));
+            password = Evaluator.getVariable(String.format("#{%s.password}", role));
             LOG.info("Инициализирован пользователь с параметрами\n Логин:[{}] Пароль:[{}] ", login, password);
         } catch (RuntimeException e) {
             throw new RuntimeException("Invalid username profile");

@@ -1,13 +1,14 @@
-package MyHooks.pages;
+package pages;
 
-import net.serenitybdd.core.pages.PageObject;
+import factories.PageEntry;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import service.AbstractPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
-public class MenuPage extends PageObject {
+@PageEntry(title = "Страница меню")
+public class MenuPage extends AbstractPage {
 
     @FindBy(xpath = "//span[@class='shopping_cart_badge']")
     WebElement countCart;
@@ -15,7 +16,6 @@ public class MenuPage extends PageObject {
     public void shouldNotBeVisibleCountOnThePage(){
         shouldNotBeVisible(countCart);
     }
-
 
     public void shouldBeVisibleCountOnThePage(int count) {
         shouldBeVisible(countCart);

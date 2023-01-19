@@ -1,15 +1,17 @@
-package MyHooks.pages;
+package pages;
 
-import net.serenitybdd.core.pages.PageObject;
+import factories.PageEntry;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import service.AbstractPage;
 
 import java.util.List;
 
 import static utils.UtilElements.selectOneElementFromListForIndex;
 import static utils.UtilElements.selectOneElementFromListForText;
 
-public class MainPage extends PageObject {
+@PageEntry(title = "Главная страница магазина")
+public class MainPage extends AbstractPage {
 
     @FindBy(xpath = "//select[@class='product_sort_container']")
     WebElement changeLanguage;

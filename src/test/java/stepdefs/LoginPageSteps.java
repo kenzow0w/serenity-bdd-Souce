@@ -2,10 +2,11 @@ package stepdefs;
 
 import io.cucumber.java.ru.*;
 import lombok.SneakyThrows;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import MyHooks.pages.LoginPage;
+import pages.LoginPage;
 
 public class LoginPageSteps {
 
@@ -16,7 +17,7 @@ public class LoginPageSteps {
     @Когда("открывается страница авторизации")
     @Step
     public void isOnLoginPage(){
-        LOG.info("Open page");
+        LOG.info(String.format("Open page: ", Serenity.getCurrentSession().getMetaData().get("webdriver.base.url")));
         loginPage.open();
     }
 

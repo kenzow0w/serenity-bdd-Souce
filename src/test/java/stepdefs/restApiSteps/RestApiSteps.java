@@ -19,7 +19,6 @@ import org.slf4j.Logger;
 
 import java.util.*;
 
-import static utils.Evaluator.getDataTable;
 import static utils.Evaluator.getVariable;
 
 public class RestApiSteps extends PageObject {

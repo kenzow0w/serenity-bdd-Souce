@@ -2,7 +2,7 @@ package stepdefs;
 
 import io.cucumber.java.ru.*;
 import net.thucydides.core.annotations.Step;
-import MyHooks.pages.MainPage;
+import pages.MainPage;
 import utils.Evaluator;
 
 public class MainPageSteps {
