@@ -1,6 +1,8 @@
 # Serenity Cucumber + JUnit Starter project
 
-Get started quickly with Serenity BDD, Cucumber and JUnit 5 with this simple starter project. 
+Get started quickly with Serenity BDD, Cucumber and JUnit 5 with this simple starter project.
+
+In this project we can use key words and general steps and methods for different pages using annotation @ElemntTitle and @PageEntry.
 
 ## Get the code
 
