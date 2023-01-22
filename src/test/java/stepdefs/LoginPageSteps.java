@@ -14,19 +14,4 @@ public class LoginPageSteps {
 
     private LoginPage loginPage;
 
-    @Когда("открывается страница авторизации")
-    @Step
-    public void isOnLoginPage(){
-        LOG.info(String.format("Open page: ", Serenity.getCurrentSession().getMetaData().get("webdriver.base.url")));
-        loginPage.open();
-    }
-
-    @SneakyThrows
-    @Затем("выполняется авторизация юзера с именем {string}, и паролем {string}")
-    @Step
-    public void loginAsUser(String login, String password)
-    {
-        loginPage.autorization(login, password);
-    }
-
 }

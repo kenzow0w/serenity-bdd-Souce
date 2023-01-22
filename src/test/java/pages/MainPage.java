@@ -10,7 +10,7 @@ import java.util.List;
 import static utils.UtilElements.selectOneElementFromListForIndex;
 import static utils.UtilElements.selectOneElementFromListForText;
 
-@PageEntry(title = "Главная страница магазина")
+@PageEntry(title = "Main store's page")
 public class MainPage extends AbstractPage {
 
     @FindBy(xpath = "//select[@class='product_sort_container']")

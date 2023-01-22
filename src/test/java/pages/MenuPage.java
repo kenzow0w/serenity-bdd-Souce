@@ -7,7 +7,7 @@ import service.AbstractPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@PageEntry(title = "Страница меню")
+@PageEntry(title = "Menu page")
 public class MenuPage extends AbstractPage {
 
     @FindBy(xpath = "//span[@class='shopping_cart_badge']")

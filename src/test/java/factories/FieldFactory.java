@@ -71,7 +71,6 @@ public class FieldFactory extends PageObject {
             List<Field> fieldsFromPage = getPageFields.apply(page);
             allFields.add(fieldsFromPage);
 
-
             PAGES_FIELDS.put(page, allFields);
         }
     };

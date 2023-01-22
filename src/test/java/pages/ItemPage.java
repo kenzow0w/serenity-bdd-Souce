@@ -7,14 +7,14 @@ import org.openqa.selenium.support.FindBy;
 import service.AbstractPage;
 
 
-@PageEntry(title = "Страница с товарами")
+@PageEntry(title = "Items page")
 public class ItemPage extends AbstractPage {
 
-    @ElementTitle("Добавить в корзину")
+    @ElementTitle("add to cart")
     @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-onesie']")
     private WebElement addItem;
 
-    @ElementTitle("Удалить из корзины")
+    @ElementTitle("remove from cart")
     @FindBy(xpath = "//button[@id='remove-sauce-labs-onesie']")
     private WebElement removeItem;
 

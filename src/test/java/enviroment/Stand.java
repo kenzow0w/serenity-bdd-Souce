@@ -19,7 +19,6 @@ public class Stand {
     private static ResourceBundle config;
 
     private Stand() {
-
     }
 
     public static void init() {

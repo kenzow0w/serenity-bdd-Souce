@@ -75,9 +75,9 @@ public class PageSteps extends AbstractPage {
     public void userAuthorized(String role) {
         final FieldSteps FIELD_STEPS = new FieldSteps();
         AccountCredentials accountCredentials = new AccountCredentials(getVariable(role));
-        FIELD_STEPS.fillUpField("Логин", accountCredentials.getLogin());
-        FIELD_STEPS.fillUpField("Пароль", accountCredentials.getPassword());
-        FIELD_STEPS.clickField("Вход");
+        FIELD_STEPS.fillUpField("Username", accountCredentials.getLogin());
+        FIELD_STEPS.fillUpField("Password", accountCredentials.getPassword());
+        FIELD_STEPS.clickField("Login");
     }
 
     @И("^пользователь завершает текущий сеанс$")

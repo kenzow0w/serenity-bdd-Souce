@@ -45,16 +45,6 @@ public class PageFactory {
         LOG.info("Текущая страница {}", page.getClass().getCanonicalName());
     }
 
-    /**
-     * Проверяем указание фрейма в аннотации @PageEntry (если не указана- по-умолчанию STANDART_ACTIVE_FRAME);
-     * Если указанный фрейм был обнаружен - фокусим драйвер на него;
-     * Если фрейм указан "TOP_WINDOW" или не был обнаружен - переключаем драйвер на основной контент;
-     * в результате возвращаем экземпяр страницы фрейма
-     *
-     * @param clazz
-     * @param <T>
-     * @return
-     */
     @SneakyThrows
     private static <T> T construct(Class<? extends AbstractPage> clazz) throws TimeoutException {
 //        List<Field> fields = FieldFactory.getPageFields.apply(clazz);
@@ -66,7 +56,6 @@ public class PageFactory {
     private static AbstractPage get(String name) throws TimeoutException {
         if (ALL_PAGES.containsKey(name)) {
             final Class<? extends AbstractPage> clazz = ALL_PAGES.get(name).get(0);
-//            Assert.assertFalse(String.format("Инициализация страниц без PageLoadMark, запрещена. На странице [%s] отсутствует аннотация @PageLoadMark", clazz), withoutPageLoadMarkPages.contains(clazz));
             return getPage(clazz);
         } else {
             throw new AutotestError(String.format("Страница [%s] не найдена. Убедитесь в наличии аннотации @PageEntry у этой страницы.", name));
