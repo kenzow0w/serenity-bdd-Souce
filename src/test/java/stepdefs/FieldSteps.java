@@ -2,10 +2,15 @@ package stepdefs;
 
 import enviroment.Init;
 import io.cucumber.java.ru.И;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.JavascriptExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Evaluator;
+import utils.UtilElements;
+
+import java.util.List;
 
 public class FieldSteps {
 
@@ -24,5 +29,28 @@ public class FieldSteps {
         Init.getCurrentPage().getField(arg0).waitUntilClickable().then().click();
         LOG.info(String.format("И нажимается кнопка [%s]", (String) Evaluator.getVariable(arg0)));
     }
+
+    @И("^из списка \"([^\"]*)\" выбирается элемент с текстом \"([^\"]*)\"$")
+    @Step
+    public void clickField(String list, String text) {
+        Init.getCurrentPage().getField(list).waitUntilClickable().then().selectByVisibleText(text);
+        LOG.info(String.format("Из списка [%s] выбирается элемент с текстом [%s]", (String) Evaluator.getVariable(list), text));
+    }
+
+    @И("^прокручиваем страницу до элемента \"([^\"]*)\"$")
+    public void scrollIntoViewElement(String fieldTitle) {
+        WebElementFacade webElementFacade = Init.getCurrentPage().getField(fieldTitle);
+        JavascriptExecutor executor = (JavascriptExecutor) Init.getWebDriver();
+        executor.executeScript("arguments[0].scrollIntoView(true);", webElementFacade);
+    }
+
+    @И("^прокручиваем страницу до элемента из списка \"([^\"]*)\" с текстом из переменной \"([^\"]*)\"$")
+    public void scrollIntoViewElement(String fieldTitle, String text) {
+        Init.getCurrentPage().getField(fieldTitle);
+//        JavascriptExecutor executor = (JavascriptExecutor) Init.getWebDriver();
+//        executor.executeScript("arguments[0].scrollIntoView(true);", UtilElements.getOneElementFromListForText(list, Evaluator.getVariable(text)));
+//        UtilElements.selectOneElementFromListForText(list, Evaluator.getVariable(text));
+    }
+
 
 }

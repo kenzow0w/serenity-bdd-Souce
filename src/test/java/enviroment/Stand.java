@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import utils.Evaluator;
 import utils.UTF8Control;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -13,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class Stand {
 
-    private static final String ERROR_MESSAGE = "Не обнаружен файл src\\test\\resources\\configs\\config.properties c настройками";
+    private static final String ERROR_MESSAGE = "Doesn't detected file src\\test\\resources\\configs\\config.properties c настройками";
     private static final Logger LOG = LoggerFactory.getLogger(Stand.class);
     private static final Locale stand = new Locale(System.getProperty("properties.bundle", "default"));
     private static ResourceBundle config;
@@ -37,7 +39,7 @@ public class Stand {
             try {
                 pullAllInStash(ResourceBundle.getBundle(name, stand, new UTF8Control()));
             } catch (MissingResourceException e) {
-                LOG.debug("Попытка загрузить {}.properties не удалась", name);
+                LOG.debug("Attempt to load {}.properties failed", name);
             }
         }
     }

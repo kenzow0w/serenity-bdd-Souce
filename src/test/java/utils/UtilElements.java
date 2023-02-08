@@ -1,5 +1,6 @@
 package utils;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -18,18 +19,21 @@ public class UtilElements {
         list.get(optional.get()).click();
     }
 
-    public static void selectOneElementFromListForText(List<WebElement> list, String text) {
+    public static void selectOneElementFromListForText(List<WebElementFacade> list, String text) {
         Optional<String> optional = Optional.of(text);
         try {
-            for (WebElement element : list) {
-                if (element.getText().equals(optional.get())) {
-                    element.click();
-                    break;
-                }
-            }
+            list.stream().filter(e -> e.getText().equals(optional.get())).findFirst().get().click();
         } catch (RuntimeException e) {
             throw new RuntimeException("Element doesn't exist");
         }
     }
 
+    public static WebElementFacade getOneElementFromListForText(List<WebElementFacade> list, String text) {
+        Optional<String> optional = Optional.of(text);
+        try {
+            return list.stream().filter(e -> e.getText().equals(optional.get())).findFirst().get();
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Element doesn't exist");
+        }
+    }
 }

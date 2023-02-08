@@ -19,7 +19,7 @@ public class AccountCredentials {
         try {
             login = Evaluator.getVariable(String.format("#{%s.login}", role));
             password = Evaluator.getVariable(String.format("#{%s.password}", role));
-            LOG.info("Инициализирован пользователь с параметрами\n Логин:[{}] Пароль:[{}] ", login, password);
+            LOG.info("Initialization user with parameters\n Login:[{}] Password:[{}] ", login, password);
         } catch (RuntimeException e) {
             throw new RuntimeException("Invalid username profile");
         }

@@ -22,10 +22,4 @@ public class MainPageSteps {
      mainPage.chooseOneItemOnThePageForIndex(index);
     }
 
-    @И("выбирается товар с именем в переменной {string}")
-    @Step
-    public void chooseOneItemForName(String name){
-        mainPage.chooseOneItemOnThePageForText(Evaluator.getVariable(name));
-    }
-
 }

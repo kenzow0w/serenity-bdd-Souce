@@ -1,5 +1,6 @@
 package pages;
 
+import factories.ElementTitle;
 import factories.PageEntry;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,9 +14,11 @@ import static utils.UtilElements.selectOneElementFromListForText;
 @PageEntry(title = "Main store's page")
 public class MainPage extends AbstractPage {
 
+    @ElementTitle(value = "List for sort items")
     @FindBy(xpath = "//select[@class='product_sort_container']")
     WebElement changeLanguage;
 
+    @ElementTitle(value = "Inventory item name")
     @FindBy(xpath = "//div[@class='inventory_item_name']")
     private List<WebElement> items;
 
@@ -25,9 +28,5 @@ public class MainPage extends AbstractPage {
 
     public void chooseOneItemOnThePageForIndex(int index) {
         selectOneElementFromListForIndex(items, index);
-    }
-
-    public void chooseOneItemOnThePageForText(String text){
-        selectOneElementFromListForText(items, text);
     }
 }

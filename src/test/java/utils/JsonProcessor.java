@@ -43,15 +43,15 @@ public class JsonProcessor {
     @SneakyThrows
     private static Path findFile(String fileName) {
         if (!jsonFolder.exists()) {
-            throw new AutotestError(String.format("Каталог %s не существует", jsonFolder.getAbsolutePath()));
+            throw new AutotestError(String.format("Catalog %s doesn't exist", jsonFolder.getAbsolutePath()));
         }
         Path path;
         try {
             path = Files.walk(Paths.get(jsonFolder.toURI())).filter(Files::isRegularFile)
                     .filter(f -> f.getFileName().toString().equals(fileName)).findFirst()
-                    .orElseThrow(() -> new AutotestError(String.format("В папке %s не найден файл %s", jsonFolder, fileName)));
+                    .orElseThrow(() -> new AutotestError(String.format("In folder %s doesn't find file %s", jsonFolder, fileName)));
         } catch (IOException e) {
-            throw new AutotestError(String.format("Ошибка чтения файла {%s}", fileName));
+            throw new AutotestError(String.format("Error in opening file {%s}", fileName));
         }
         return path;
     }
