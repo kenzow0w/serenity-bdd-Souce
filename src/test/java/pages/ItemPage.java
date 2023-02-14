@@ -11,18 +11,10 @@ import service.AbstractPage;
 public class ItemPage extends AbstractPage {
 
     @ElementTitle("add to cart")
-    @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-onesie']")
+    @FindBy(xpath = "//button[contains(text(), 'Add to cart')]")
     private WebElement addItem;
 
     @ElementTitle("remove from cart")
-    @FindBy(xpath = "//button[@id='remove-sauce-labs-onesie']")
+    @FindBy(xpath = "//button[contains(text(), 'Remove')]")
     private WebElement removeItem;
-
-    public void addItemToTheCart() {
-        addItem.click();
-    }
-
-    public void shouldBeVisibleElementRemove() {
-        shouldBeVisible(removeItem);
-    }
 }

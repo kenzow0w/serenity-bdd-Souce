@@ -27,14 +27,26 @@ public class FieldFactory extends PageObject {
 
     private static final Map<Class<? extends AbstractPage>, List<List<Field>>> PAGES_FIELDS = new HashMap<>();
     private static final int FIELD_LIST = 1;
+    final static int FIRST_FIELD = 0;
 
     @SneakyThrows
     public static WebElementFacade getField(String name, Class<? extends AbstractPage> page) {
-        final int FIRST_FIELD = 0;
+
         checkPageInPagesFields.accept(page);
         try {
             return fieldFromPageStream.apply(page, name)
                     .map(fieldToWebElementFacade)
+                    .collect(Collectors.toList()).get(FIRST_FIELD);
+        } catch (IndexOutOfBoundsException e) {
+            throw new AutotestError(String.format("Поле [%s] не объявлено на странице ", name));
+        }
+    }
+
+    public static String getXpath(String name, Class<? extends AbstractPage> page) {
+        checkPageInPagesFields.accept(page);
+        try {
+            return fieldFromPageStream.apply(page, name)
+                    .map(fieldToXpath)
                     .collect(Collectors.toList()).get(FIRST_FIELD);
         } catch (IndexOutOfBoundsException e) {
             throw new AutotestError(String.format("Поле [%s] не объявлено на странице ", name));
@@ -47,6 +59,11 @@ public class FieldFactory extends PageObject {
     private static Function<Field, WebElementFacade> fieldToWebElementFacade = field ->
             WebElementFacadeImpl.wrapWebElement(Init.getWebDriver(),
                     Init.getWebDriver().findElement(By.xpath(field.getAnnotation(FindBy.class).xpath())));
+
+    /**
+     * Преобразование Field в String
+     */
+    private static Function<Field, String> fieldToXpath = field -> field.getAnnotation(FindBy.class).xpath();
 
     /**
      * Получение со страницы page

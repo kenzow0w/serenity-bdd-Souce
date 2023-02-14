@@ -1,22 +1,14 @@
 package stepdefs;
 
-import enviroment.Init;
 import io.cucumber.java.ru.*;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
-import net.thucydides.core.ThucydidesSystemProperty;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.bootstrap.ThucydidesAgent;
-import net.thucydides.core.webdriver.ThucydidesConfigurationException;
-import net.thucydides.core.webdriver.ThucydidesWebDriverEventListener;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
-import net.thucydides.junit.guice.ThucydidesJUnitModule;
+import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Evaluator;
 
-import java.util.ArrayList;
-
+import static enviroment.Init.getCurrentPage;
 import static utils.Evaluator.getVariable;
 import static utils.Evaluator.setVariable;
 
@@ -40,7 +32,21 @@ public class UtilSteps extends PageObject {
 
     @И("^вывести в консоль значение переменной \"([^\"]*)\"$")
     @Step
-    public void вывестиВКонсольЗначениеПеременной(String arg0) {
+    public void printTerminal(String arg0) {
         LOG.info((String) Evaluator.getVariable(arg0));
+    }
+
+    @И("^проверяется (не|)видимость элемента \"([^\"]*)\"$")
+    @Step
+    public void checkVisibleOfElement(String visible, String fieldTitle) {
+        boolean isVisible = visible.isEmpty();
+        boolean checkedProperty;
+        try {
+            checkedProperty = getCurrentPage().getField(fieldTitle).shouldBeVisible().isVisible();
+        } catch (RuntimeException e) {
+            checkedProperty = false;
+        }
+        Assert.assertEquals("Element exist/doesn't exist", isVisible, checkedProperty);
+        LOG.info(String.format("Element '%s' %s отображается на странице", fieldTitle, visible));
     }
 }

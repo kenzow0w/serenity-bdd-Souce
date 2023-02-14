@@ -6,14 +6,16 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 public abstract class AbstractPage extends PageObject {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractPage.class);
 
     public WebElementFacade getField(String name) {
         return FieldFactory.getField(name, this.getClass());
+    }
+
+    public String getXpath(String name) {
+        return FieldFactory.getXpath(name, this.getClass());
     }
 
 }

@@ -4,7 +4,9 @@ import enviroment.Init;
 import io.cucumber.java.ru.И;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Evaluator;
@@ -46,10 +48,10 @@ public class FieldSteps {
 
     @И("^прокручиваем страницу до элемента из списка \"([^\"]*)\" с текстом из переменной \"([^\"]*)\"$")
     public void scrollIntoViewElement(String fieldTitle, String text) {
-        Init.getCurrentPage().getField(fieldTitle);
-//        JavascriptExecutor executor = (JavascriptExecutor) Init.getWebDriver();
-//        executor.executeScript("arguments[0].scrollIntoView(true);", UtilElements.getOneElementFromListForText(list, Evaluator.getVariable(text)));
-//        UtilElements.selectOneElementFromListForText(list, Evaluator.getVariable(text));
+        List<WebElement> list = Init.getWebDriver().findElements(By.xpath(Init.getCurrentPage().getXpath(fieldTitle)));
+        JavascriptExecutor executor = (JavascriptExecutor) Init.getWebDriver();
+        executor.executeScript("arguments[0].scrollIntoView(true);", UtilElements.getOneElementFromListForText(list,text));
+        UtilElements.getOneElementFromListForText(list,text).click();
     }
 
 

@@ -10,16 +10,6 @@ public class MainPageSteps {
 
     private MainPage mainPage;
 
-    @И("изменяется сортировка товаров по {string}")
-    @Step
-    public void changeLanguage(String text){
-        mainPage.selectLanguage(text);
-    }
 
-    @И("выбирается товар с порядковым номером {int}")
-    @Step
-    public void chooseOneItemForIndex(int index){
-     mainPage.chooseOneItemOnThePageForIndex(index);
-    }
 
 }
