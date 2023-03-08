@@ -21,22 +21,6 @@ public class Evaluator {
     private static final Pattern VAR_PATTERN_COMPILED = Pattern.compile(VAR_PATTERN);
     private static final Pattern RANDOM_NUMBER_PATTERN_COMPILED = Pattern.compile(RANDOM_NUMBER_PATTERN);
     private static final Pattern DATATABLE_VAR_PATTERN_COMPILED = Pattern.compile(DATATABLE_VAR_PATTERN);
-//    public static Map<Object, Object> getBasicStash() {
-//        EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
-//        SerenitySystemProperties list = SerenitySystemProperties.getProperties();
-//        list.getValue(ThucydidesSystemProperty.valueOf("webdriver.driver"));
-//        Iterator<String> iterator = variables.getKeys().iterator();
-//        while (iterator.hasNext()) {
-//            for (String key : variables.getKeys()) {
-//                System.out.println("key =" +key);
-//                System.out.println("value =" +variables.getProperty(key));
-//                Evaluator.setVariable(key, variables2);
-//                STASH.put(key, variables.getProperty(key));
-//            }
-//
-//        }
-//        return STASH;
-//    }
 
     public static void setVariable(String name, Object value) {
         STASH.put(name, value);
